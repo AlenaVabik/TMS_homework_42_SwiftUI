@@ -9,56 +9,119 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isHeartSelected: Bool = false
-    
+    @State var isHeartPinkSelected: Bool = false
+
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-        VStack {
-            Image("Image_iPhone16pro")
-                .resizable()
-                .foregroundStyle(.tint)
-                .frame(maxWidth: 250, maxHeight: 320, alignment: .center)
-            HStack {
-                Text("$999")
-                    .bold()
-                    .font(.system(size: 35))
-                //                    .padding(.leading)
-                Text("$1099")
-                    .font(.system(size: 20))
-                    .foregroundColor(.gray)
-                    .strikethrough()
+        HStack {
+            //MARK: 1
+            ZStack(alignment: .topTrailing) {
+                VStack {
+                    Image("Image_iPhone16pro")
+                        .resizable()
+                        .frame(maxWidth: 170, maxHeight: 200, alignment: .leading)
+                    //                        .padding(.top)
+                    HStack {
+                        Text("$999")
+                            .bold()
+                            .font(.system(size: 30))
+                        Text("$1099")
+                            .font(.system(size: 17))
+                            .foregroundColor(.gray)
+                            .strikethrough()
+                    }
+                    .frame(width: 165, height: 50, alignment: .leading)
+                    
+                    Text("Apple iPhone 16 Pro 128GB")
+                        .frame(width: 170, height: 20, alignment: .leading)
+                        .font(.system(size: 12))
+                }
+                //                .offset(x: 0, y: 0)
+                //                .padding()
+                
+                Button(action: {
+                    self.isHeartSelected.toggle()
+                })  {
+                    ZStack {
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .shadow(color: .gray, radius: 3)
+                        if isHeartSelected {
+                            Image(systemName: "heart.fill")
+                                .resizable()
+                                .frame(width: 15, height: 12)
+                                .foregroundColor(.red)
+                        } else {
+                            Image(systemName: "heart")
+                                .resizable()
+                                .frame(width: 15, height: 12)
+                                .foregroundColor(.red)
+                        }
+                    }
+                }
+                .padding(.leading)
             }
-            .frame(width: 240, height: 50, alignment: .leading)
+            .padding(10)
+            .background(Color.white)
+            .cornerRadius(10)
             
-            Text("Apple iPhone 16 Pro 128GB")
-                .frame(width: 240, height: 20, alignment: .leading)
-            
-            
-        }
-        Button(action: {
-            self.isHeartSelected.toggle()
-        })  {
-            ZStack {
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .foregroundColor(.white)
-                if isHeartSelected {
-                    Image(systemName: "heart.fill")
+            //MARK: 2
+            ZStack(alignment: .topTrailing) {
+                VStack {
+                    Image("Image_iPhone16")
                         .resizable()
-                        .frame(width: 30, height: 27)
-                        .foregroundColor(.red)
-                } else {
-                    Image(systemName: "heart")
-                        .resizable()
-                        .frame(width: 30, height: 27)
-                        .foregroundColor(.red)
+                        .frame(maxWidth: 170, maxHeight: 200, alignment: .trailing)
+                    HStack {
+                        Text("$899")
+                            .bold()
+                            .font(.system(size: 30))
+                        Text("$959")
+                            .font(.system(size: 17))
+                            .foregroundColor(.gray)
+                            .strikethrough()
+                    }
+                    .frame(width: 165, height: 50, alignment: .leading)
+                    
+                    Text("Apple iPhone 16 128GB")
+                        .frame(width: 170, height: 20, alignment: .leading)
+                        .font(.system(size: 12))
+                }
+    
+                Button(action: {
+                    self.isHeartPinkSelected.toggle()
+                })  {
+                    ZStack {
+                        Image(systemName: "circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.white)
+                            .shadow(color: .gray, radius: 3)
+                        if isHeartPinkSelected {
+                            Image(systemName: "heart.fill")
+                                .resizable()
+                                .frame(width: 15, height: 12)
+                                .foregroundColor(.red)
+                        } else {
+                            Image(systemName: "heart")
+                                .resizable()
+                                .frame(width: 15, height: 12)
+                                .foregroundColor(.red)
+                        }
+                    }
                 }
             }
+            .padding(10)
+            .background(Color.white)
+            .cornerRadius(10)
         }
-        .offset(x: 20, y: 0)
-//        .padding()
+        .padding(.leading, 5)
+        .padding(.trailing, 5)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .background(Color.gray.opacity(0.5))
+        
+  
     }
-                   }
 }
 
 #Preview {
