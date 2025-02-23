@@ -19,7 +19,6 @@ struct ContentView: View {
                     Image("Image_iPhone16pro")
                         .resizable()
                         .frame(maxWidth: 170, maxHeight: 200, alignment: .leading)
-                    //                        .padding(.top)
                     HStack {
                         Text("$999")
                             .bold()
@@ -35,8 +34,6 @@ struct ContentView: View {
                         .frame(width: 170, height: 20, alignment: .leading)
                         .font(.system(size: 12))
                 }
-                //                .offset(x: 0, y: 0)
-                //                .padding()
                 
                 Button(action: {
                     self.isHeartSelected.toggle()
@@ -47,17 +44,10 @@ struct ContentView: View {
                             .frame(width: 30, height: 30)
                             .foregroundColor(.white)
                             .shadow(color: .gray, radius: 3)
-                        if isHeartSelected {
-                            Image(systemName: "heart.fill")
-                                .resizable()
-                                .frame(width: 15, height: 12)
-                                .foregroundColor(.red)
-                        } else {
-                            Image(systemName: "heart")
-                                .resizable()
-                                .frame(width: 15, height: 12)
-                                .foregroundColor(.red)
-                        }
+                        Image(systemName: isHeartSelected ? "heart.fill" : "heart")
+                            .resizable()
+                            .frame(width: 15, height: 12)
+                            .foregroundColor(.red)
                     }
                 }
                 .padding(.leading)
@@ -97,17 +87,10 @@ struct ContentView: View {
                             .frame(width: 30, height: 30)
                             .foregroundColor(.white)
                             .shadow(color: .gray, radius: 3)
-                        if isHeartPinkSelected {
-                            Image(systemName: "heart.fill")
-                                .resizable()
-                                .frame(width: 15, height: 12)
-                                .foregroundColor(.red)
-                        } else {
-                            Image(systemName: "heart")
-                                .resizable()
-                                .frame(width: 15, height: 12)
-                                .foregroundColor(.red)
-                        }
+                        Image(systemName: isHeartPinkSelected ? "heart.fill" : "heart")
+                            .resizable()
+                            .frame(width: 15, height: 12)
+                            .foregroundColor(.red)
                     }
                 }
             }
