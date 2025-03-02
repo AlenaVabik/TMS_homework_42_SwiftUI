@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentViewFilmDetails: View {
+struct MovieDetailsContentView: View {
     @State var isHeartSelected: Bool = false
     let items: [CastAndCrewModel]
 
@@ -70,12 +70,14 @@ struct ContentViewFilmDetails: View {
             Text("Cast and Crew")
                 .font(.body)
             
-            ScrollView(.horizontal) {
+//            ScrollView(.horizontal) {
+//                GeometryReader { geometry in
                 HStack {
                     ForEach(items, id: \.id) { item in
                         CastAndCrewCard(item: item)
                     }
-                }
+//                }
+//                .frame(width: geometry.size.width, alignment: .leading)
             }
             
             Button("Watch now") {
@@ -98,41 +100,12 @@ struct ContentViewFilmDetails: View {
         CastAndCrewModel(image: "ToshioSuzuki", name: "Toshio Suzuki", profession: "Produsser"),
         CastAndCrewModel(image: "JoeHisaishi", name: "Joe Hisaishi", profession: "Produsser")
     ]
-    ContentViewFilmDetails(items: items)
+    MovieDetailsContentView(items: items)
 }
 
-struct CastAndCrewCard: View {
-    @State var item: CastAndCrewModel
 
-    var body: some View {
-        HStack {
-            
-            Image(item.image)
-                .resizable()
-                .frame(maxWidth: 50, maxHeight: 50, alignment: .leading)
-                .cornerRadius(25)
-            VStack {
-                Text(item.name)
-                    .font(.caption)
-                    .bold()
-                Text(item.profession)
-                    .font(.caption)
-                    .frame(maxWidth: .infinity, alignment: .leading)
 
-            }
-        }
-        .frame(maxWidth: 150, alignment: .center)
-        .padding(.trailing, 10)
-    }
-}
 
-struct CastAndCrewModel: Identifiable {
-    var id = UUID()
-    
-    var image: String
-    var name: String
-    var profession: String
-}
 
 
 //MARK: ScrollView
