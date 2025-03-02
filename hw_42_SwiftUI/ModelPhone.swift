@@ -4,8 +4,11 @@
 //
 //  Created by Alena  on 1.03.25.
 //
+import Foundation
 
-struct PhoneModel {
+struct PhoneModel: Identifiable {
+    var id = UUID()
+    
     var name: String
     var price: Double
     var specialOfferPrice: Double?

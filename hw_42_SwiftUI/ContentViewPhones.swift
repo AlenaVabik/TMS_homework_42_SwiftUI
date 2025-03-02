@@ -13,8 +13,10 @@ struct ContentView: View {
 
     var body: some View {
         HStack {
-            ForEach(items, id: \.name) { item in
-                ItemCard(item: item)
+            ForEach(items, id: \.id) { item in
+                Section {
+                    ItemCard(item: item)
+                }
             }
         }
         .padding(.leading, 5)
@@ -68,19 +70,20 @@ struct ItemCard: View {
             Button(action: {
                 item.isFavorite.toggle()
             })  {
-                ZStack {
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .shadow(color: .gray, radius: 3)
-                    Image(systemName: item.isFavorite ? "heart.fill" : "heart")
-                        .resizable()
-                        .frame(width: 15, height: 12)
-                        .foregroundColor(.red)
-                }
+                Image(systemName: "circle.fill")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .foregroundColor(.white)
+                    .shadow(color: .gray, radius: 3)
+                    .overlay(
+                        Image(systemName: item.isFavorite ? "heart.fill" : "heart")
+                            .resizable()
+                            .frame(width: 15, height: 12)
+                            .foregroundColor(.red)
+                    )
             }
             .padding(.leading)
+            
         }
         .padding(10)
         .background(Color.white)
