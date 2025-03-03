@@ -70,14 +70,10 @@ struct MovieDetailsContentView: View {
             Text("Cast and Crew")
                 .font(.body)
             
-//            ScrollView(.horizontal) {
-//                GeometryReader { geometry in
-                HStack {
-                    ForEach(items, id: \.id) { item in
-                        CastAndCrewCard(item: item)
-                    }
-//                }
-//                .frame(width: geometry.size.width, alignment: .leading)
+            VStack {
+                ForEach(items, id: \.id) { item in
+                    CastAndCrewCard(item: item)
+                }
             }
             
             Button("Watch now") {
@@ -102,21 +98,3 @@ struct MovieDetailsContentView: View {
     ]
     MovieDetailsContentView(items: items)
 }
-
-
-
-
-
-
-//MARK: ScrollView
-
-//            ScrollView(.vertical) {
-//                ForEach(items, id: \.id) { item in
-//                    ItemCard(item: item)
-//                }
-//            }
-            
-//MARK: List
-//            List(items, id: \.id) { item in
-//                ItemCard(item: item)
-//            }

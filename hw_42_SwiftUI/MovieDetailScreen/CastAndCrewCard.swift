@@ -11,27 +11,21 @@ struct CastAndCrewCard: View {
     var item: CastAndCrewModel
 
     var body: some View {
-        GeometryReader { geometry in
-            
             HStack {
-                
-                Image(item.image)
-                    .resizable()
-                    .frame(maxWidth: 50, maxHeight: 50, alignment: .leading)
-                    .cornerRadius(25)
-                VStack {
-                    Text(item.name)
-                        .font(.caption)
-                        .bold()
-                    Text(item.profession)
-                        .font(.caption)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                }
+            Image(item.image)
+                .resizable()
+                .frame(maxWidth: 50, maxHeight: 50, alignment: .leading)
+                .cornerRadius(25)
+            VStack {
+                Text(item.name)
+                    .font(.caption)
+                    .bold()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                Text(item.profession)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: geometry.size.width, alignment: .center)
-            .padding(.trailing, 10)
         }
-        
+        .padding(.trailing, 10)
     }
 }
