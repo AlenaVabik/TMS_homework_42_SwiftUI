@@ -1,46 +1,50 @@
 //
-//  ContentView.swift
+//  ItemMovieCardView.swift
 //  hw_42_SwiftUI
 //
-//  Created by Alena  on 21.02.25.
+//  Created by Alena  on 2.03.25.
 //
 
 import SwiftUI
 
-struct ContentViewFilm: View {
+struct ItemMovieCard: View {
+    var movieModel: MovieModel
     @State var isHeartSelected: Bool = false
 
     var body: some View {
         HStack(alignment: .top) {
-            Image("Image_miyadzaki")
+            Image(movieModel.image)
                     .resizable()
-                    .frame(maxWidth: 150, maxHeight: 200, alignment: .leading)
+            
+                    .frame(maxWidth: 140, maxHeight: 200)
                     .cornerRadius(10)
-                    .padding(.trailing, 10)
+                    .padding(.leading, 15)
+
             VStack(alignment: .leading) {
-                Text("Spirited away")
+                Text(movieModel.name)
                     .bold()
                     .font(.system(size: 25))
                     .frame(width: 170, alignment: .topLeading)
-                Label("125 Minutes", systemImage: "clock.fill")
-                    .font(.system(size: 15))
+                Label(movieModel.duration, systemImage: "clock.fill")
+                    .font(.callout)
                     .foregroundColor(.gray)
                     .padding(.top, 10)
-                Label("31 Dec. 2002", systemImage: "calendar")
-                    .font(.system(size: 15))
+                Label(movieModel.premiere, systemImage: "calendar")
+                    .font(.callout)
                     .foregroundColor(.gray)
-                    .padding(.top, 10)
                 HStack {
                     Image(systemName: "film.fill")
-                        .font(.system(size: 15))
+                        .font(.callout)
                         .foregroundColor(.gray)
                     Button("Action") {
                         
                     }
                     .buttonStyle(.borderedProminent)
+                    .padding(.leading, 10)
                 }
-                .padding(.top, 5)
+                .padding(.leading, 3)
             }
+            .frame(maxWidth: .infinity, maxHeight: 180, alignment: .center)
 
             Button(action: {
                 self.isHeartSelected.toggle()
@@ -49,18 +53,12 @@ struct ContentViewFilm: View {
                     .resizable()
                     .frame(width: 15, height: 12)
                     .foregroundColor(.red)
+                    .padding(.trailing, 15)
             }
+            .padding(5)
         }
-        .padding(15)
-        .background(Color.white)
         .cornerRadius(10)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-        .background(Color.gray.opacity(0.5))
-        
-  
-    }
-}
+        .frame(maxWidth: .infinity, maxHeight: 180, alignment: .center)
 
-#Preview {
-    ContentViewFilm()
+    }
 }
